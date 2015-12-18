@@ -1,5 +1,5 @@
 # HTML5 Canvas Match3
-Learn how to make a Match-3 game like Bejeweled and Candy Crush Saga with HTML5 Canvas and JavaScript. We create a working prototype and explain all the algorithms.
+A Match-3 game like Bejeweled and Candy Crush Saga with HTML5 Canvas and JavaScript.
 
 This is a code example that belongs to the article: [How To Make A Match-3 Game With HTML5 Canvas](http://rembound.com/articles/how-to-make-a-match3-game-with-html5-canvas)
 
