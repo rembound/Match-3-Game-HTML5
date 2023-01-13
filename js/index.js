@@ -44,6 +44,16 @@ window.onload = function() {
         tiles: [],      // The two-dimensional tile array
         selectedtile: { selected: false, column: 0, row: 0 }
     };
+
+    //Custom images
+   const customImages = new CustomImages();
+
+   var images = customImages.loadingImages(["./images/amarelo.jpg", "./images/blue.jpg", "./images/gray.png",
+    "./images/garrafa.jpg", "./images/green.jpg", "./images/red.jpg", "./images/pink.jpg", "./images/roxa.jpg"]);
+    
+
+    //end custom images
+
     
     // All of the different tile colors in RGB
     var tilecolors = [[255, 128, 128],
@@ -321,12 +331,12 @@ window.onload = function() {
         // Draw title
         context.fillStyle = "#ffffff";
         context.font = "24px Verdana";
-        context.fillText("Match3 Example - Rembound.com", 10, 30);
+        context.fillText("Match3", 10, 30);
         
         // Display fps
         context.fillStyle = "#ffffff";
         context.font = "12px Verdana";
-        context.fillText("Fps: " + fps, 13, 50);
+        // context.fillText("Fps: " + fps, 13, 50);
     }
     
     // Draw buttons
@@ -357,10 +367,14 @@ window.onload = function() {
                 // Check if there is a tile present
                 if (level.tiles[i][j].type >= 0) {
                     // Get the color of the tile
+                    // console.log(level.tiles[i][j].type);
                     var col = tilecolors[level.tiles[i][j].type];
+                    // console.log(level.tiles[i][j].type);
+                    // var col = "#fff";
                     
                     // Draw the tile using the color
                     drawTile(coord.tilex, coord.tiley, col[0], col[1], col[2]);
+                    drawImage(coord.tilex, coord.tiley, level.tiles[i][j].type);
                 }
                 
                 // Draw the selected tile
@@ -415,8 +429,17 @@ window.onload = function() {
     
     // Draw a tile with a color
     function drawTile(x, y, r, g, b) {
+        // console.log(context);
+        
         context.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
         context.fillRect(x + 2, y + 2, level.tilewidth - 4, level.tileheight - 4);
+    }
+
+    // Draw a tile with a image
+    async function drawImage(x, y, imageType) {
+        if (images && images[imageType]) {
+            context.drawImage( await images[imageType], x, y, 40, 40);
+        }
     }
     
     // Render clusters
